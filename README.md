@@ -1,160 +1,199 @@
-:::writing{variant=“standard” id=“38157”}
+# zmk-config-zyraft
 
-zmk-config-zyraft
+## PL
 
-PL
+Konfiguracja ZMK dla **Zyra FT** (Sweep/Cradio) - minimalistycznej klawiatury ergonomicznej FalbaTech.
 
-Konfiguracja ZMK dla Zyra FT (Sweep/Cradio) - minimalistyczna klawiatura ergonomiczna FalbaTech.
+## Hardware
 
-Hardware
-	•	Shield: cradio (oficjalny w upstream ZMK)
-	•	Kontrolery: 2× nice!nano v2
-	•	Bez wyświetlacza (pin D1/P0.06 zajęty przez switch matrix)
-	•	34 klawisze (3 rzędy × 5 kolumn + 2 thumb na stronę)
-	•	Home-row mods aktywne (Shift/Alt/Ctrl/Gui)
+- Shield: `cradio` (oficjalny w upstream ZMK)
+- Kontrolery: 2x nice!nano v2
+- Bez wyświetlacza, pin D1/P0.06 zajęty przez switch matrix
+- 34 klawisze, 3 rzędy x 5 kolumn + 2 thumb na stronę
+- Home-row mods aktywne, Shift/Alt/Ctrl/Gui
 
-Warstwy
+## Warstwy
 
-#	Nazwa	Funkcja
-0	default_layer	QWERTY base + home-row mods
-1	right_layer	Cyfry, nawigacja (aktywuje prawy thumb)
-2	left_layer	Symbole, brackets (aktywuje lewy thumb)
-3	tri_layer	System, BT controls (oba thumby naraz)
+| # | Nazwa | Funkcja |
+|---|---|---|
+| 0 | `default_layer` | QWERTY base + home-row mods |
+| 1 | `right_layer` | Cyfry, nawigacja, aktywowane prawym thumbem |
+| 2 | `left_layer` | Symbole, brackets, aktywowane lewym thumbem |
+| 3 | `tri_layer` | System, BT controls, oba thumby naraz |
 
-Home-row mods
+## Home-row mods
 
-Lewa ręka:
-	•	A = Shift
-	•	S = Alt
-	•	D = Ctrl
-	•	F = Gui
+### Lewa ręka
 
-Prawa ręka:
-	•	J = Gui
-	•	K = Ctrl
-	•	L = Alt
-	•	' = Shift
+- `A` = Shift
+- `S` = Alt
+- `D` = Ctrl
+- `F` = Gui
 
-Tapping-term 220ms, quick-tap 150ms, require-prior-idle 100ms.
+### Prawa ręka
 
-ZMK Studio
+- `J` = Gui
+- `K` = Ctrl
+- `L` = Alt
+- `'` = Shift
 
-Aktywne. Procedura odblokowania (jednakowa we wszystkich klawiaturach FalbaTech FT):
+Parametry:
+- Tapping-term: 220ms
+- Quick-tap: 150ms
+- Require-prior-idle: 100ms
 
-Trzymaj oba thumby aktywujące warstwy systemowe (TAB + BSPC) → wciśnij skrajny lewy górny klawisz.
+## ZMK Studio
 
-Po odblokowaniu klawiatura jest edytowalna z:
-zmk.studio￼
+ZMK Studio jest aktywne.
 
-Bluetooth - obsługa 5 urządzeń
+Procedura odblokowania jest taka sama we wszystkich klawiaturach FalbaTech FT:
 
-Klawiatura obsługuje 5 niezależnych profili Bluetooth. W warstwie systemowej (tri_layer):
+> Trzymaj oba thumby aktywujące warstwy systemowe, TAB + BSPC, i wciśnij skrajny lewy górny klawisz.
 
-Klawisz	Funkcja
-Z	Profil BT 0
-X	Profil BT 1
-C	Profil BT 2
-V	Profil BT 3
-B	Profil BT 4
-N	Wyczyść aktywny profil
-M	Wyczyść wszystkie profile
-,	Tryb USB
-.	Tryb Bluetooth
+Po odblokowaniu klawiatura jest edytowalna z poziomu przeglądarki:
 
-Aktywacja warstwy systemowej: trzymaj jednocześnie lewy thumb (TAB) i prawy thumb (BSPC). Warstwa Tri włącza się automatycznie jako conditional layer.
+https://zmk.studio
 
-Build
+## Bluetooth - obsługa 5 urządzeń
 
-GitHub Actions buduje 3 firmware:
-	•	cradio_left-nice_nano-zmk.uf2
-	•	cradio_right-nice_nano-zmk.uf2
-	•	settings_reset-nice_nano-zmk.uf2
+Klawiatura obsługuje 5 niezależnych profili Bluetooth. Sterowanie odbywa się w warstwie `tri_layer`.
 
-Flashowanie
-	1.	Lewa USB - 2× reset - cradio_left-...uf2
-	2.	Prawa USB - 2× reset - cradio_right-...uf2
-	3.	Połącz TRRS - klawiatura “Zyra FT” w BT
+| Klawisz | Funkcja |
+|---|---|
+| `Z` | Profil BT 0 |
+| `X` | Profil BT 1 |
+| `C` | Profil BT 2 |
+| `V` | Profil BT 3 |
+| `B` | Profil BT 4 |
+| `N` | Wyczyść aktywny profil |
+| `M` | Wyczyść wszystkie profile |
+| `,` | Tryb USB |
+| `.` | Tryb Bluetooth |
 
-Wsparcie
+Aktywacja warstwy systemowej:
+- trzymaj jednocześnie lewy thumb `TAB` i prawy thumb `BSPC`
+- warstwa Tri aktywuje się automatycznie jako conditional layer
 
-FalbaTech - https://falbatech.click
+## Build
 
-⸻
+GitHub Actions buduje 3 pliki firmware:
 
-EN
+- `zyra_left-nice_nano-zmk.uf2`
+- `zyra_right-nice_nano-zmk.uf2`
+- `settings_reset-nice_nano-zmk.uf2`
 
-ZMK configuration for Zyra FT (Sweep/Cradio) - minimalist ergonomic FalbaTech keyboard.
+## Flashowanie
 
-Hardware
-	•	Shield: cradio (official upstream ZMK shield)
-	•	Controllers: 2× nice!nano v2
-	•	No display (pin D1/P0.06 used by switch matrix)
-	•	34 keys (3 rows × 5 columns + 2 thumb keys per side)
-	•	Home-row mods enabled (Shift/Alt/Ctrl/Gui)
+1. Podłącz lewą połówkę przez USB.
+2. Naciśnij RESET dwa razy szybko.
+3. Przeciągnij `zyra_left-...uf2` na dysk `NICENANO`.
+4. Podłącz prawą połówkę przez USB.
+5. Naciśnij RESET dwa razy szybko.
+6. Przeciągnij `zyra_right-...uf2`.
+7. Połącz obie połówki przewodem TRRS.
+8. Sparuj klawiaturę jako "Zyra FT" przez Bluetooth.
 
-Layers
+## Wsparcie
 
-#	Name	Function
-0	default_layer	QWERTY base + home-row mods
-1	right_layer	Numbers, navigation (activated by right thumb)
-2	left_layer	Symbols, brackets (activated by left thumb)
-3	tri_layer	System, BT controls (both thumbs together)
+FalbaTech  
+https://falbatech.click
 
-Home-row mods
+---
 
-Left hand:
-	•	A = Shift
-	•	S = Alt
-	•	D = Ctrl
-	•	F = Gui
+## EN
 
-Right hand:
-	•	J = Gui
-	•	K = Ctrl
-	•	L = Alt
-	•	' = Shift
+ZMK configuration for **Zyra FT** (Sweep/Cradio) - minimalist ergonomic FalbaTech keyboard.
 
-Tapping-term 220ms, quick-tap 150ms, require-prior-idle 100ms.
+## Hardware
 
-ZMK Studio
+- Shield: `cradio` (official upstream ZMK shield)
+- Controllers: 2x nice!nano v2
+- No display, pin D1/P0.06 used by switch matrix
+- 34 keys, 3 rows x 5 columns + 2 thumb keys per side
+- Home-row mods enabled, Shift/Alt/Ctrl/Gui
 
-Enabled. Unlock procedure (same across all FalbaTech FT keyboards):
+## Layers
 
-Hold both thumb keys activating system layers (TAB + BSPC) → press the top left key.
+| # | Name | Function |
+|---|---|---|
+| 0 | `default_layer` | QWERTY base + home-row mods |
+| 1 | `right_layer` | Numbers, navigation, activated by right thumb |
+| 2 | `left_layer` | Symbols, brackets, activated by left thumb |
+| 3 | `tri_layer` | System, BT controls, both thumbs together |
 
-After unlocking, the keyboard can be configured from:
-zmk.studio￼
+## Home-row mods
 
-Bluetooth - 5 device support
+### Left hand
 
-The keyboard supports 5 independent Bluetooth profiles. In the system layer (tri_layer):
+- `A` = Shift
+- `S` = Alt
+- `D` = Ctrl
+- `F` = Gui
 
-Key	Function
-Z	BT Profile 0
-X	BT Profile 1
-C	BT Profile 2
-V	BT Profile 3
-B	BT Profile 4
-N	Clear active profile
-M	Clear all profiles
-,	USB mode
-.	Bluetooth mode
+### Right hand
 
-System layer activation: hold the left thumb (TAB) and right thumb (BSPC) together. The Tri layer activates automatically as a conditional layer.
+- `J` = Gui
+- `K` = Ctrl
+- `L` = Alt
+- `'` = Shift
 
-Build
+Parameters:
+- Tapping-term: 220ms
+- Quick-tap: 150ms
+- Require-prior-idle: 100ms
+
+## ZMK Studio
+
+ZMK Studio is enabled.
+
+The unlock procedure is the same across all FalbaTech FT keyboards:
+
+> Hold both thumb keys activating system layers, TAB + BSPC, and press the top left key.
+
+After unlocking, the keyboard can be configured from your browser:
+
+https://zmk.studio
+
+## Bluetooth - 5 device support
+
+The keyboard supports 5 independent Bluetooth profiles. Control is handled in the `tri_layer`.
+
+| Key | Function |
+|---|---|
+| `Z` | BT Profile 0 |
+| `X` | BT Profile 1 |
+| `C` | BT Profile 2 |
+| `V` | BT Profile 3 |
+| `B` | BT Profile 4 |
+| `N` | Clear active profile |
+| `M` | Clear all profiles |
+| `,` | USB mode |
+| `.` | Bluetooth mode |
+
+System layer activation:
+- hold the left thumb `TAB` and right thumb `BSPC` together
+- the Tri layer activates automatically as a conditional layer
+
+## Build
 
 GitHub Actions builds 3 firmware files:
-	•	cradio_left-nice_nano-zmk.uf2
-	•	cradio_right-nice_nano-zmk.uf2
-	•	settings_reset-nice_nano-zmk.uf2
 
-Flashing
-	1.	Left USB - press reset 2× - cradio_left-...uf2
-	2.	Right USB - press reset 2× - cradio_right-...uf2
-	3.	Connect TRRS - keyboard appears as “Zyra FT” over Bluetooth
+- `zyra_left-nice_nano-zmk.uf2`
+- `zyra_right-nice_nano-zmk.uf2`
+- `settings_reset-nice_nano-zmk.uf2`
 
-Support
+## Flashing
 
-FalbaTech - https://falbatech.click
-:::
+1. Connect the left half via USB.
+2. Press RESET twice quickly.
+3. Drag `zyra_left-...uf2` onto the `NICENANO` drive.
+4. Connect the right half via USB.
+5. Press RESET twice quickly.
+6. Drag `zyra_right-...uf2`.
+7. Connect both halves using a TRRS cable.
+8. Pair the keyboard as "Zyra FT" over Bluetooth.
+
+## Support
+
+FalbaTech  
+https://falbatech.click
