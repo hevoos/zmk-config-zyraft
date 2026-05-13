@@ -15,6 +15,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 
 // Home-row mods - lewa ręka: Shift/Alt/Ctrl/Gui na A/S/D/F
 #define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
@@ -104,14 +105,14 @@
             display-name = "Tri";
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ STUDIO   │          │          │          │ BT 0     │   │          │          │          │          │ RESET    │
-          &studio_unlock &trans   &trans     &trans   &bt BT_SEL 0     &trans     &trans     &trans     &trans    &sys_reset
+        //│ STUDIO   │          │          │          │          │   │          │          │          │          │ RESET    │
+          &studio_unlock &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ BOOT     │          │          │          │ BT 1     │   │          │          │          │          │ BOOT     │
-          &bootloader  &trans     &trans     &trans   &bt BT_SEL 1     &trans     &trans     &trans     &trans   &bootloader
+        //│ BOOT     │          │          │          │          │   │          │          │          │          │ BOOT     │
+          &bootloader  &trans       &trans     &trans     &trans         &trans     &trans     &trans     &trans   &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ BT CLR   │ BT 2     │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
+        //│ BT 0     │ BT 1     │ BT 2     │ BT 3     │ BT 4     │   │ BT CLR   │ BT CLRALL│ USB      │ BLE      │          │
+        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &bt BT_CLR &bt BT_CLR_ALL &out OUT_USB &out OUT_BLE &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
