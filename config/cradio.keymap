@@ -53,7 +53,7 @@
         compatible = "zmk,combos";
 
         #include "moutis/moutis_combos.dtsi"    // common/location based combos (cut/copy/paste, esc, app, etc.)
-        #include HD_combo_file                  // HD alpha/mnemonic based combos (h-digraphs, etc.)
+    //    #include HD_combo_file                  // HD alpha/mnemonic based combos (h-digraphs, etc.)
 
     };
     /*
