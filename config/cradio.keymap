@@ -33,7 +33,7 @@
     behaviors {
 
         #include "moutis/moutis_behaviors.dtsi" // common behaviors (hold-taps, mod-morphs, lingers, adaptives)
-        #include HD_adapt_file                  // HDalpha/mnemonic based adaptives (most of them)
+      //  #include HD_adapt_file                  // HDalpha/mnemonic based adaptives (most of them)
 
     };
 
