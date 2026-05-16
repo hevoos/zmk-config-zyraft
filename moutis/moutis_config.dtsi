@@ -1,0 +1,70 @@
+/*
+ * moutis_config.dtsi
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
+#include "../hosts/keycodes_mac_ABCext.h"  // extended keycodes for host OS/Layout
+
+/*
+ * optional features
+ */
+#define COMMA_CAP           // , before alpha capitalizes that alpha
+#define H_DIGRAPH_COMBOS    // th, ch, sh, wh, gh, ph
+#define EN_PRONOUN_COMBOS   // I, I'm, I've I'd I'll you've you'd your you're you'll etc.
+//#define JP_MODE_ENABLE      // Add a JP layer,combos, etc.
+#define JP_YOUON_COMBOS     // Major Japanese contracted sounds as combos
+#define PERSONAL_MACROS "personal_macros.dtsi"
+#define m_b_B
+#define m_b_G
+#define m_b_I
+#define m_b_T
+#define m_b_U
+#define m_b_V
+
+/*
+ * global constants/configuration settings
+ */
+
+#define my_ak_term 350 // behavior-adaptive-key trigger time window
+#define my_ak_delay 50 // behavior-adaptive-key typing speed
+#define my_sticky_term 1100 // for sticky keys and sticky layers
+#define my_cc_term (my_ak_term * 4) // CommaCap trigger time window
+
+#define my_tapping_term 200         // hold-tap threshhold
+#define my_quick_tapping_term 55    // lower reduces misfires, increases missed fires
+#define my_tapping_speed 40         // ms/tap (100 = 6 cps ≈ 60wpm; 40 = 25 ≈ 125 wpm)
+
+
+&mt {
+    tapping-term-ms = <my_tapping_term>;
+};
+&sl {
+    release-after-ms = <my_sticky_term>;
+};
+&sk {
+    lazy;
+    release-after-ms = <my_sticky_term>;
+};
+&caps_word {
+    mods = <(MOD_LSFT | MOD_RSFT)>;
+    continue-list = <UNDER MINUS BSPC DEL LEFT RIGHT>;
+};
+&num_word {
+  continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LPRN RPRN>;
+};
+
+/*
+ * my layers
+ */
+#define l_any   -1
+#define l_hd    0 // main HD alpha layer (Mac centric)
+//#define l_jp    1 // alternate Japanese base layer (XCL="-Zん", no adaptives)
+#define l_akDot 2 // funky holdover ak layer (used for comma cap/expansions)
+#define l_sym   3 // symbols, punctuation, off-map alphas
+#define l_fun   4 // function (left) number rows (right)
+#define l_num   5 // navpad (left) numpad (right)
+#define l_nav   6 // metakeys (left) navpad (right)
+#define l_cfg   7 // Keyboard settings · Media/Consumer controls
+

@@ -1,0 +1,48 @@
+    ZMK_MACRO(b_B,
+        tap-ms = <(my_tapping_speed / 2)>;
+        bindings = <&kp BSPC &kp LS(B)>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp RSHFT>
+                , <&macro_tap &kp L &kp O &kp O &kp M &kp I &kp N &kp G &kp T &kp O &kp N>
+                ;
+        )
+    ZMK_MACRO(b_G,
+        tap-ms = <(my_tapping_speed / 2)>;
+        bindings = <&kp BSPC &kp LS(G)>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp RSHFT>
+                , <&macro_tap &kp R &kp A &kp T &kp E &kp F &kp U &kp L &kp L &kp Y &kp CMMA &kp SPACE>
+                ;
+        )
+    ZMK_MACRO(b_I,
+        tap-ms = <(my_tapping_speed / 2)>;
+        bindings = <&kp BSPC &kp LS(I)>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp RSHFT>
+                , <&macro_tap &kp N &kp D &kp I &kp A &kp N &kp A &kp SPACE>
+                ;
+        )
+    ZMK_MACRO(b_T,
+        tap-ms = <(my_tapping_speed / 2)>;
+        bindings = <&kp BSPC &kp LS(T)>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp RSHFT>
+                , <&macro_tap &kp A &kp H &kp L &kp I &kp A>
+                ;
+        )
+    ZMK_MACRO(b_U,
+        tap-ms = <(my_tapping_speed / 2)>;
+        bindings = <&kp BSPC &kp LS(U)>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp RSHFT>
+                , <&macro_tap &kp N &kp I &kp V &kp E &kp R &kp S &kp I &kp T &kp Y &kp SPACE>
+                ;
+        )
+    ZMK_MACRO(b_V,
+        tap-ms = <(my_tapping_speed / 2)>;
+        bindings = <&kp BSPC &kp LS(V)>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp RSHFT>
+                , <&macro_tap &kp I &kp V &kp I &kp A &kp N>
+                ;
+        )
